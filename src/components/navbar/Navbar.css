@@ -1,0 +1,122 @@
+.navbar .search {
+  /* border: 1px solid red; */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background-color: rgba(128, 128, 128, 0.11);
+  transition: 0.3s ease-in-out;
+}
+
+.navbar .search svg {
+  font-size: 1.1em;
+  transition: 0.3s ease-in-out;
+  /* fill: #fff; */
+}
+.navbar .search:not(.active):hover {
+  background-color: rgba(128, 128, 128, 0.438);
+}
+
+.navbar .search:not(.active):hover svg {
+  font-size: 1.5em;
+  fill: #fff;
+  user-select: none;
+}
+
+.navbar .search input {
+  display: none !important;
+  all: unset;
+  width: 0;
+}
+
+.navbar .search.active {
+  display: flex;
+  width: fit-content;
+  border-radius: 50px;
+  gap: 10px;
+  padding: 10px;
+}
+.navbar .search.active svg {
+  order: 2;
+  fill: #0d6efd;
+}
+
+.navbar .search.active input {
+  order: 1;
+  display: block !important;
+  width: 150px;
+  border-bottom: 2px solid #0d6dfd59;
+  color: #0d6efd;
+}
+
+.navbar .cart {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.11);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar .cart span {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #21d192;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  user-select: none;
+}
+.navbar .cart svg {
+  transition: 0.3s ease-in-out;
+}
+
+.navbar .cart:hover {
+  background-color: rgba(128, 128, 128, 0.438);
+}
+
+.navbar .cart:hover > svg {
+  color: #fff;
+  font-size: 1.5em;
+}
+.navbar .info {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.11);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+}
+.navbar .info:hover {
+  background-color: rgba(128, 128, 128, 0.438);
+}
+
+.navbar .info svg {
+  font-size: 1.1em;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar .info:hover svg {
+  font-size: 1.5em;
+}
+
+.navbar .info svg path {
+  transition: 0.3s ease-in-out;
+}
+
+.navbar .info:hover svg path {
+  stroke: #fff !important;
+}
