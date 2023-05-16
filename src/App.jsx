@@ -14,6 +14,7 @@ import "./App.css";
 function App() {
   const [openCart, setOpenCart] = useState(false);
   const [homeCategory, setHomeCategory] = useState("all");
+
   return (
     <div className="App">
       <Router>

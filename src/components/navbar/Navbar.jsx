@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
@@ -13,11 +13,38 @@ import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import { GrContactInfo } from "react-icons/gr";
 
 import "./Navbar.css";
+import { Search } from "./Search";
 
 function MyNavbar({ setOpenCart, openCart }) {
-  const [searchActive, setSearchActive] = React.useState(false);
-  const searchInput = useRef(null);
+  const [searchActive, setSearchActive] = useState(false);
+  const icon = useRef(null);
+
   const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    const handleDocumentClick = (event) => {
+      // Check if the clicked element is the other element, and close the popup if it's open
+
+      if (
+        searchActive &&
+        event.target !== icon.current.children[0] &&
+        event.target !== icon.current.children[1]
+      ) {
+        setSearchActive(false);
+      }
+
+      if (openCart && event.target.className === "shop-cart") {
+        setOpenCart(false);
+      }
+    };
+
+    document.addEventListener("click", handleDocumentClick);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, [searchActive]);
 
   const expand = "lg";
 
@@ -48,31 +75,38 @@ function MyNavbar({ setOpenCart, openCart }) {
                 <Link className={"nav-link"} to="/shop">
                   Shop
                 </Link>
-                <Link className="nav-link" to="/contact">
+                {/* <Link className="nav-link" to="/contact">
                   {" "}
                   Contact
-                </Link>
+                </Link> */}
               </Nav>
-              <div className="d-flex align-items-center gap-3 ">
-                <div className={`search ${searchActive ? "active" : ""}`}>
-                  <AiOutlineSearch
-                    onClick={() => {
-                      setSearchActive(!searchActive);
-                      searchInput.current.focus();
-                    }}
-                  />
-                  <input type="text" ref={searchInput} />
-                </div>
-                <div className="cart" onClick={() => setOpenCart(!openCart)}>
-                  <AiOutlineShoppingCart />
-                  <span className="products-count">{cart.items.length}</span>
-                </div>
-                <div className="info">
-                  <GrContactInfo />
-                </div>
-              </div>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
+          <div
+            className="d-flex align-items-center gap-3 position-absolute end-0 "
+            style={{ marginRight: "90px" }}
+          >
+            <div
+              ref={icon}
+              className={`search ${searchActive ? "active" : ""}`}
+              id="search-div"
+            >
+              <AiOutlineSearch
+                onClick={() => {
+                  setSearchActive(true);
+                }}
+              />
+
+              <Search searchActive={searchActive} />
+            </div>
+            <div className="cart" onClick={() => setOpenCart(!openCart)}>
+              <AiOutlineShoppingCart />
+              <span className="products-count">{cart.items.length}</span>
+            </div>
+            {/* <div className="info">
+              <GrContactInfo />
+            </div> */}
+          </div>
         </Container>
       </Navbar>
     </>
