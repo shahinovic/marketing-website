@@ -75,10 +75,8 @@ function MyNavbar({ setOpenCart, openCart }) {
                 <Link className={"nav-link"} to="/shop">
                   Shop
                 </Link>
-                {/* <Link className="nav-link" to="/contact">
-                  {" "}
-                  Contact
-                </Link> */}
+                <div className="nav-link disabled">About</div>
+                <div className="nav-link disabled">Contact</div>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

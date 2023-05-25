@@ -21,22 +21,25 @@ const Footer = () => {
         </div>
 
         <div>
-          <a href="" className="text-white me-4">
-            <AiFillFacebook />
-          </a>
-          <a href="" className="text-white me-4">
-            <AiFillTwitterCircle />
-          </a>
-          <a href="" className="text-white me-4">
+          <a
+            href="mailto:shahinforwork@gmail.com"
+            target="_blank"
+            className="text-white me-4"
+          >
             <AiFillGoogleCircle />
           </a>
-          <a href="" className="text-white me-4">
-            <AiFillInstagram />
-          </a>
-          <a href="" className="text-white me-4">
+          <a
+            href="https://www.linkedin.com/in/ahmed-shahin-64ba80256/"
+            target="_blank"
+            className="text-white me-4"
+          >
             <AiFillLinkedin />
           </a>
-          <a href="" className="text-white me-4">
+          <a
+            href="https://github.com/shahinovic"
+            target="_blank"
+            className="text-white me-4"
+          >
             <AiFillGithub />
           </a>
         </div>

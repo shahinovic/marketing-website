@@ -10,10 +10,16 @@ import {
   ProductDetails,
 } from "./components";
 import "./App.css";
+import { useGetProductsQuery } from "./reduxServices/ProductsApi";
 
 function App() {
   const [openCart, setOpenCart] = useState(false);
   const [homeCategory, setHomeCategory] = useState("all");
+  const products = useGetProductsQuery("products").data;
+
+  if (!products) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="App">
