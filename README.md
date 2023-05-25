@@ -63,7 +63,7 @@ To get started with the project, follow these steps:
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/your/repository.git
+   git clone https://github.com/shahinovic/marketing-website.git
    ```
 
 2. Install the dependencies:
